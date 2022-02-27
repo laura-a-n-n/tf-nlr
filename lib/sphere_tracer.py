@@ -421,7 +421,7 @@ class SphereTracer:
             masked_x_dist = tf.boolean_mask(x_dist, int_mask)
             masked_x_f_dist = tf.boolean_mask(x_f_dist, int_mask)
             
-            sec_t, is_crossed = self.sample(sdf, lambda z : ray(z, mask=int_mask), masked_x_dist, masked_x_f_dist)
+            sec_t, is_crossed = self.sample(lambda z : ray(z, mask=int_mask), masked_x_dist, masked_x_f_dist)
             conv_mask = tf.tensor_scatter_nd_update(conv_mask, 
                                                     tf.where(int_mask),
                                                     is_crossed)
