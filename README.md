@@ -39,10 +39,3 @@ For more options, try running either script with the help flag, e.g.  `python tr
 
 ## Pretrained models
 The `h5` directory contains two trained models. The folder `pretrain` is a training initialization; the neural SDF is initialized to a radius of 0.5. The folder `L1` contains a trained model for the scene titled L1 in the NLR dataset.
-
-## TODO
-This implementation is not perfect, so consider contributing to the project! The following are just a few ways `tf-nlr` can be improved.
-
- - Training may be incorrectly implemented; I haven't found a way to use an overall learning rate of 1e-4; as it stands the neural SDF S requires a learning rate that is 100 times smaller.
- - The `model.nlr.NeuralLumigraph` class isn't a `tf.keras.Model` subclass. Additionally, optimizer saving/loading isn't implemented.
- - Many functions need to be decorated with `@tf.function`.
