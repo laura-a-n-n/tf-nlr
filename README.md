@@ -26,13 +26,13 @@ To get started with `tf-nlr`, check out [the Jupyter notebook](tf-nlr.ipynb). Th
 You can train a model from scratch with `train.py`.
 
 ```
-python train.py --dataset_path path/to/data/folder --img_size max_dimension --out_folder path/to/output/folder
+python train.py --dataset_path path/to/data/folder --img_ratio scale_ratio --out_folder path/to/output/folder
 ```
 
 To evaluate a fitted model, run `test.py`.
 
 ```
-python test.py --model path/to/fitted/model --dataset_path path/to/data/folder --img_size max_dimension
+python test.py --model path/to/fitted/model --dataset_path path/to/data/folder --img_ratio scale_ratio
 ```
 
 For more options, try running either script with the help flag, e.g.  `python train.py -h`, or edit the [config file](conf/config.py).
