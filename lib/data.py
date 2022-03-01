@@ -10,7 +10,7 @@ from lib.math import get_sphere_intersection
 class Data:
     '''Extract and preprocess data for Neural Lumigraph Rendering.
     
-    Usage: Data(path, img_size, rgb='rgb_folder_name', seg='seg_folder_name')
+    Usage: Data(path, img_ratio, rgb='rgb_folder_name', seg='seg_folder_name')
     
     Attributes:
         dataset_path: str -- dataset path (default '.')
@@ -22,10 +22,10 @@ class Data:
         compute_rays -- gets rays
         compute_data -- creates a dataset
     '''
-    
+        
     def __init__(self, 
                  path,
-                 img_size=800,
+                 img_ratio=5,
                  rgb='rgb',
                  seg='mattes',
                  data_type='nlr'):
@@ -35,25 +35,7 @@ class Data:
             path: str -- value for dataset_path attribute
         
         Keyword arguments:
-            img_size: int -- longest side length (in px) of resized image (default 800)
-            rgb: str -- rgb folder name (default 'rgb')
-            seg: str -- binary mask folder name (default 'mattes')
-            data_type: str -- type of dataset (default 'nlr')
-        '''
-        
-    def __init__(self, 
-                 path,
-                 img_size=800,
-                 rgb='rgb',
-                 seg='mattes',
-                 data_type='nlr'):
-        '''Initialize data loader.
-        
-        Arguments:
-            path: str -- value for dataset_path attribute
-        
-        Keyword arguments:
-            img_size: int -- longest side length (in px) of resized image (default 800)
+            img_ratio: int -- scale down images by dividing by this size (default 5)
             rgb: str -- rgb folder name (default 'rgb')
             seg: str -- binary mask folder name (default 'mattes')
             data_type: str -- type of dataset (default 'nlr')
@@ -96,14 +78,14 @@ class Data:
             [
                 # rgb
                 tf.clip_by_value(
-                    tf.image.resize(img[0], [img_size, img_size], 
+                    tf.image.resize(img[0], [tf.shape(img[0])[0]//img_ratio, tf.shape(img[0])[1]//img_ratio],
                     method='bicubic', 
                     antialias=True, 
                     preserve_aspect_ratio=True) / 255, 0., 1.
                 ),
 
                 # seg
-                (tf.image.resize(img[1], [img_size, img_size], preserve_aspect_ratio=True) / 255) > .5
+                (tf.image.resize(img[1], [tf.shape(img[0])[0]//img_ratio, tf.shape(img[0])[1]//img_ratio], preserve_aspect_ratio=True) / 255) > .5
             ] 
         for img in zip(img_rgb, img_seg)]
 
