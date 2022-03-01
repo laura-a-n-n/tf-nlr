@@ -35,6 +35,8 @@ To evaluate a fitted model, run `test.py`.
 python test.py --model path/to/fitted/model --dataset_path path/to/data/folder --img_ratio scale_ratio
 ```
 
+Note that `img_ratio` divides the image dimensions. So if you enter `img_ratio=5`, the images will be five times smaller.
+
 For more options, try running either script with the help flag, e.g.  `python train.py -h`, or edit the [config file](conf/config.py).
 
 ## Pretrained models
