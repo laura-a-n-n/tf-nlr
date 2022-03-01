@@ -14,7 +14,7 @@ def get_args():
     
     parser.add_argument('--dataset_path', type=str, default='./data/nlr_dataset/M2', help='Path to dataset root folder.')
     parser.add_argument('--model', type=str, default='h5/M2', help='Model folder.')
-    parser.add_argument('--img_size', type=int, default=800, help='Maximum image dimension.')
+    parser.add_argument('--img_ratio', type=int, default=5, help='Scale down images by dividing by this number.')
     parser.add_argument('--out_folder', type=str, default='test', help='Output folder.')
     parser.add_argument('--held_out_only', dest='render_fitted', action='store_false')
     parser.add_argument('--fitted_only', dest='render_held_out', action='store_false')
@@ -38,7 +38,7 @@ def test(opt, nlr=None):
         
         ''' Data '''
         
-        nlr_data = Data(opt.dataset_path, img_size=opt.img_size)
+        nlr_data = Data(opt.dataset_path, img_ratio=opt.img_ratio)
         nlr_data.compute_rays(scene_radius_scale=opt.data['scene_radius_scale'])
         nlr_dataset = nlr_data.compute_dataset(v_img=opt.data['v_img'])
 
