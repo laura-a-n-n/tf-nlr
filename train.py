@@ -23,7 +23,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='Train a TF-NLR model.')
     
     parser.add_argument('--dataset_path', type=str, default='./data/nlr_dataset/M2', help='Path to dataset root folder.')
-    parser.add_argument('--img_size', type=int, default=800, help='Maximum image dimension.')
+    parser.add_argument('--img_ratio', type=int, default=5, help='Scale down images by dividing by this number.')
     parser.add_argument('--checkpoint', type=str, default='h5/pretrain', help='Initialization checkpoint folder.')
     parser.add_argument('--epoch', type=int, default=1, help='Initial epoch count.')
     parser.add_argument('--s_lr', type=float, default=0., help='Initial learning rate for neural SDF. If zero, read from config file.')
@@ -73,7 +73,7 @@ def train(opt, nlr=None, epoch=1, notebook=False):
     if nlr is None:
         ''' Data '''
         
-        nlr_data = Data(opt.dataset_path, img_size=opt.img_size)
+        nlr_data = Data(opt.dataset_path, img_ratio=opt.img_ratio)
         nlr_data.compute_rays(scene_radius_scale=opt.data['scene_radius_scale'])
         nlr_dataset = nlr_data.compute_dataset(v_img=opt.data['v_img'])
 
