@@ -59,7 +59,7 @@ opt = dict(
         # learning rate
         learning_rate = dict(
             s_lr=dict(
-                initial_learning_rate=1e-6, # S initial learning rate
+                initial_learning_rate=1e-4, # S initial learning rate
                 decay_steps=30000, # S learning rate decay steps
                 decay_rate=.5, # E decay rate
                 staircase=True, # E staircase decay
