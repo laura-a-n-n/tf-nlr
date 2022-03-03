@@ -60,9 +60,9 @@ class NeuralLumigraph:
         hidden_omega_s, hidden_omega_e = hidden_omega
 
         # create models
-        self.sdf = SIRENModel(units=s_units, final_units=1+latent_code_size, num_layers=s_layers-1, 
+        self.sdf = SIRENModel(units=s_units, final_units=s_final_units+latent_code_size, num_layers=s_layers-1, 
                               w0_initial=omega_s, w0=hidden_omega_s, final_activation='linear')
-        self.e = SIRENModel(units=e_units, final_units=3, num_layers=e_layers-1, 
+        self.e = SIRENModel(units=e_units, final_units=e_final_units, num_layers=e_layers-1, 
                             w0_initial=omega_e, w0=hidden_omega_e, final_activation='sine')
         
         # separate the SDF from the global feature vector
