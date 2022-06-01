@@ -60,8 +60,7 @@ class SphereTracer:
         '''
         sdf = self.sdf
         
-        min_dist = tf.math.minimum(min_dist, max_dist)
-        max_dist = tf.math.maximum(min_dist, max_dist)
+        min_dist, max_dist = tf.math.minimum(min_dist, max_dist), tf.math.maximum(min_dist, max_dist)
         
         curr_t = min_dist
         is_active = tf.ones_like(min_dist, dtype=tf.bool)
