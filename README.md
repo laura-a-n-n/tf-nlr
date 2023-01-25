@@ -2,9 +2,7 @@
 **An unofficial implementation of Neural Lumigraph Rendering in TensorFlow 2.** <br />
 <sub>Undergraduate project by Laura Ann Perkins, [New College of Florida](https://ncf.edu/).</sub>
 
-<p align='center'>
-  <img src='img/M2.gif?raw=true' alt='GIF rendered with NLR.' />
-</p>
+![3D model reconstructed with tf-nlr](https://user-images.githubusercontent.com/100505614/214487742-49524c04-5cb2-4c05-8c09-06b82e4034c4.png)
 
 This project is based on the 2021 paper [Neural Lumigraph Rendering](http://www.computationalimaging.org/publications/nlr/). I first started working on this project back in July 2021, before the code for [MetaNLR++](https://github.com/alexanderbergman7/metanlrpp) had been released. This is the first open-source implementation of their original paper.
 
